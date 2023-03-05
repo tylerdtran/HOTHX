@@ -1,12 +1,36 @@
 {% extends '_base.html' %}
+
+{% block pageTitle %}Dashboard{% endblock pageTitle %}
+
 {% block content %}
-<div id="header">
-    <h1>HothX</h1>
-    <p id="menu">☰</p>
-</div>
+<style>
+    #content-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: stretch;
+        align-content: stretch;
+        height: 100vh;
+    }
+
+    #event-list {
+        order: 1;
+        flex-basis: 60%;
+        /* background-color: red; */
+    }
+
+    #google-map {
+        order: 2;
+        flex-basis: 40%;
+        /* background-color: green; */
+    }
+</style>
 <div id="content-wrapper">
     <div id="event-list">
-        {% component "event" title="myTitle" description="myDesc" %}
+        {% component "event" title="Beach Cleanup" location="Long Beach, CA" date="June 21, 2023" time="9:00am" organization="Long Beach Surfrider" %}
+        {% component "event" title="Beach Cleanup" location="Long Beach, CA" date="June 21, 2023" time="9:00am" organization="Long Beach Surfrider" %}
+        {% component "event" title="Beach Cleanup" location="Long Beach, CA" date="June 21, 2023" time="9:00am" organization="Long Beach Surfrider" %}
     </div>
     <div id="google-map">
         google map

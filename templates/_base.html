@@ -7,47 +7,27 @@
     <title>HothX</title>
     {% component_css_dependencies %}
     <style>
-        #page-wrapper {
-            margin: 6vw 7vw;
-        }
-
         #header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 4vh;
         }
 
         #menu {
             font-size: 30px;
             cursor: pointer;
         }
-
-        #content-wrapper {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: stretch;
-            align-content: stretch;
-            height: 100vh;
-        }
-
-        #event-list {
-            order: 1;
-            flex-basis: 60%;
-            background-color: red;
-        }
-
-        #google-map {
-            order: 2;
-            flex-basis: 40%;
-            background-color: green;
-        }
     </style>
 </head>
 
 <body>
-    <div id="page-wrapper">
+    <div id="page-wrapper" style="margin: 6vh 7vw;">
+        <div id="header">
+            <h1>CleanMarine</h1>
+            <p id="menu">☰</p>
+        </div>
+        <h3>{% block pageTitle %}{% endblock pageTitle %}</h3>
         {% block content %}
         {% endblock content %}
     </div>

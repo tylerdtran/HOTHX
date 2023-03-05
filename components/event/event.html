@@ -11,15 +11,14 @@
 <body>
 
     <div style="display: flex; flex-direction: row; flex-wrap: wrap">
-        <div class="card" style="width: 18rem; margin: 10px">
-            <img src="{{ card.image }}" class="card-img-top">
+        <div class="card" style="width: 100%; margin: 10px; margin-right: 35px">
             <div class="card-body">
                 <div style="display: flex; flex-direction: row">
-                    <h5 class="card-title">{{ title }}</h5>
+                    <h4 class="card-title" style="cursor: pointer;">{{ organization }}</h4>
                 </div>
-                <p class="card-text">{{ description }}</p>
-                <a href="/command/{{ card.id }}/color" class="btn btn-primary">Change Color</a>
-                <a href="/command/{{ card.id }}/delete" class="btn btn-primary">Delete</a>
+                <p class="card-text">{{ date }} {{ time }} | {{ location }}</p>
+                <!-- <a href={{ url }} class="btn btn-outline-secondary">Sign Up</a> -->
+                <!-- <a href="/command/{{ card.id }}/delete" class="btn btn-primary">Delete</a> -->
             </div>
         </div>
     </div>
