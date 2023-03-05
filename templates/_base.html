@@ -1,17 +1,57 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-            <title>{% block title %}HothX  
-                   {% endblock title %}</title>
-    </head>
-    <body>
-        <div class="container">
-            {% block content %}
-            {% endblock content %}
-        </div>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <title>HothX</title>
+    <style>
+        #page-wrapper {
+            margin: 6vw 7vw;
+        }
+
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #menu {
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        #content-wrapper {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: stretch;
+            align-content: stretch;
+            height: 100vh;
+        }
+
+        #event-list {
+            order: 1;
+            flex-basis: 60%;
+            background-color: red;
+        }
+
+        #google-map {
+            order: 2;
+            flex-basis: 40%;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page-wrapper">
+        {% block content %}
+        {% endblock content %}
+    </div>
+</body>
+
 </html>
 
 <!-- all content is placed in between "block" and "endblock" -->
