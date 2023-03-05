@@ -1,51 +1,72 @@
 # events model
-from .models import Events
+# from .models import Events
 
-# scraping
-import requests
+# scraping tools
 from bs4 import BeautifulSoup
 import json
 from datetime import datetime
-import lxml
+from requests_html import HTMLSession
 
 SURFRIDER_URL = 'https://volunteer.surfrider.org'
 
 # This function scrapes the Surfrider Foundation website for events
-# def scrape_surfrider():
-#     article_list = []
-#     try:
-#         print('Starting the scraping tool')
-#         # execute my request, parse the data using XML
-#         # parser in BS4
-#         r = requests.get(SURFRIDER_URL)
-#         soup = BeautifulSoup(r.content, features='xml')
-#         # select only the "items" I want from the data
-#         articles = soup.findAll('item')
+def scrape_surfrider():
+    article_list = []
+    try:
+        # print('Starting the scraping tool')
+
+        # create an HTML session
+        session = HTMLSession()
+
+        # send a GET request to the page
+        response = session.get(SURFRIDER_URL)
+
+        # render the JavaScript on the page
+        response.html.render()
+
+        # extract the content you want using Beautiful Soup
+        soup = BeautifulSoup(response.html.html, 'html.parser')
+        
+        # sample Event in json format
+        sample_event = {
+            'name': 'Surfsample Foundation - San Diego Chapter',
+            'link': 'https://volunteer.surfrider.org/index.cfm?fuseaction=donate.event&eventID=1000',
+            'start_time': '2021-09-25T09:00:00-07:00',
+            'end_time': '2021-09-25T12:00:00-07:00',
+            'location': 'San Diego, CA'
+        }
+
+        # THE REST OF THIS FUNCTION DOES NOT WORK
+        
+        # execute my request, parse the data using XML parser in BS4
+        soup = BeautifulSoup(r.content, features='xml')
+        # select only the "items" I want from the data
+        articles = soup.findAll('item')
     
-#         # for each "item" I want, parse it into a list
-#         for a in articles:
-#             title = a.find('title').text
-#             link = a.find('link').text
-#             published_wrong = a.find('pubDate').text
-#             published = datetime.strptime(published_wrong, '%a, %d %b %Y %H:%M:%S %z')
-#             # print(published, published_wrong) # checking correct date format
-#             # create an "article" object with the data
-#             # from each "item"
-#             article = {
-#                 'title': title,
-#                 'link': link,
-#                 'published': published,
-#                 'source': 'HackerNews RSS'
-#             }
-#             # append my "article_list" with each "article" object
-#             article_list.append(article)
-#             print('Finished scraping the articles')
+        # for each "item" I want, parse it into a list
+        for a in articles:
+            title = a.find('title').text
+            link = a.find('link').text
+            published_wrong = a.find('pubDate').text
+            published = datetime.strptime(published_wrong, '%a, %d %b %Y %H:%M:%S %z')
+            # print(published, published_wrong) # checking correct date format
+            # create an "article" object with the data
+            # from each "item"
+            article = {
+                'title': title,
+                'link': link,
+                'published': published,
+                'source': 'HackerNews RSS'
+            }
+            # append my "article_list" with each "article" object
+            article_list.append(article)
+            print('Finished scraping the articles')
     
-#             # after the loop, dump my saved objects into a .txt file
-#             return save_function(article_list)
-#     except Exception as e:
-#         print('The scraping job failed. See exception:')
-#         print(e)
+            # after the loop, dump my saved objects into a .txt file
+            return save_function([sample_event])
+    except Exception as e:
+        print('The scraping job failed. See exception:')
+        print(e)
 
 # This function takes a list of JSON events and loads them into the database
 def save_function(event_list):
@@ -59,8 +80,6 @@ def save_function(event_list):
                 link = event['link'],
                 start_time = event['start_time'],
                 end_time = event['end_time'],
-                created_at = event['created_at'],
-                updated_at = event['updated_at'],
                 location = event['location']
             )
             new_count += 1
@@ -69,3 +88,5 @@ def save_function(event_list):
             print(e)
             break
     return print('finished')
+
+scrape_surfrider()
