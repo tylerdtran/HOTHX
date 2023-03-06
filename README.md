@@ -1,37 +1,27 @@
-# HOTHX
-Our Hack on the Hill Project
+# Clean Marine
 
-The youtube link to our project: https://www.youtube.com/watch?v=vv2qFi7livM&ab_channel=Alyssa
+HothX Presentation and Demo: https://youtu.be/zuwXPLttlSM
 
-There may be dependecies to install such as selenium, django
+## About
 
-To run the project: 
-Please download python3
+Our web app seeks to centralize information about local beach clean up events for those that wish to voluneer. We built Clean Marine using the Django full-stack Webframework to host our SQL database and web server, wrote webscraping scripts using Selenium and Beautiful Soup, and using the Google Maps API to provide users a visual guide on locating nearby events.
 
-Please download pipenv: 
-```pip install pipenv```
+In the future, we'd like to integrate more volunteer organizations in our web scraper scripts and create a filtering tool for users to view events from certain organizations or within a certain distance. Additionally, we'd like to display the locations of each event listed on Clean Marine in the Google Maps component.
 
-Please run it in a virtual environment:
-```pipenv shell```
+## Setup
 
-Please download django using the pip install django. 
-```pip install django```
+1. Install python3 and the Chrome driver for web scraping (https://chromedriver.storage.googleapis.com/index.html?path=111.0.5563.41/) on your machine
+1. ```git clone https://github.com/tylerdtran/HOTHX.git```
+2. ```cd HOTHX```
+3. ```pip3 install pipenv```
+4. ```pipenv shell```
+5. ```pip3 install django selenium django_components webdriver_manager```
 
-Please download the chrome drivers using the following link: 
-https://chromedriver.storage.googleapis.com/index.html?path=111.0.5563.41/
+## Updating the SQL Database
+1. ```python manage.py makemigrations```
+2. ```python manage.py migrate```
 
-Please download selenium: 
-
-```pip install selenium```
-
-Please install django_components:
-```pip install django_components```
-
-Please install the component drivers:
-```pip install webdriver_manager```
-
-Please run the python
-```python manage.py runserver``` 
-
-Should open the http://localhost:8000/
+## Running the Development Server
+1. ```python manage.py runserver``` 
+2. Open the web page at http://localhost:8000/
 
