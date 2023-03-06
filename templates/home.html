@@ -47,8 +47,10 @@
         {% endfor %}
     </div>
     <div id="google-map">
-        <iframe width="100%" height="100%" style="border:5px" loading="lazy" allowfullscreen
-        src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJZQ9c8IW8woARN0gTXFiTqSU&key=AIzaSyAFYSVqdgFsiww6aTS_DLN40bzofjB6fMA"></iframe>
+        {% for event_i in events %}
+            <iframe width="100%" height="100%" style="border:5px" loading="lazy" allowfullscreen
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAFYSVqdgFsiww6aTS_DLN40bzofjB6fMA&q={{ event_i.placeid }}"></iframe>
+        {% endfor %}
     </div>
 
 </div>
