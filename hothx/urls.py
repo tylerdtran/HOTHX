@@ -16,11 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from .views import home_page_view
-from django.db import IntegrityError
 # scraping tools
 from bs4 import BeautifulSoup
 import json
 from datetime import datetime
+import urllib.parse
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -62,9 +62,6 @@ def scrape_surfrider():
     except Exception as err:
         print('The scraping job failed. See exception:')
         print(err)
-    except IntegrityError as err: 
-        print("Unique constraint failed, passing...")
-        pass 
     print(e_list)
     save_function(e_list)
 
@@ -95,12 +92,12 @@ def save_function(event_list):
     for event in event_list:
         try:
             Events.objects.create(
-                placeid = event['placeid'],
+                placeid = urllib.parse.quote_plus(event['location']),
                 eventname = event['eventname'],
                 organization = event['organization'],
                 link = event['link'],
                 date_and_time = event['date_and_time'],
-                location = event['location']
+                location = event['location'],
             )
             new_count += 1
         except Exception as e:
