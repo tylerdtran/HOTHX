@@ -7,7 +7,7 @@ from django.db import models
 
 # This is the model for the Events table.
 class Events(models.Model):
-    eventname = models.CharField(max_length=200)
+    eventname = models.CharField(max_length=200, unique=True)
     organization = models.CharField(max_length=200)
     link = models.CharField(max_length=2083)
     date_and_time = models.CharField(max_length=200)

@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from .views import home_page_view
+from django.db import IntegrityError
 # scraping tools
 from bs4 import BeautifulSoup
 import json
@@ -61,6 +62,9 @@ def scrape_surfrider():
     except Exception as err:
         print('The scraping job failed. See exception:')
         print(err)
+    except IntegrityError as err: 
+        print("Unique constraint failed, passing...")
+        pass 
     print(e_list)
     save_function(e_list)
 
