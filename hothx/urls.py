@@ -20,4 +20,5 @@ from .views import HomePageView
 urlpatterns = [
     path("", HomePageView.as_view(), name='home'),
     path('admin/', admin.site.urls),
+    # path('command/<int:id>/cmd', command)
 ]
