@@ -6,6 +6,12 @@ There may be dependecies to install such as selenium, django
 To run the project: 
 Please download python3
 
+Please download pipenv: 
+```pip install pipenv```
+
+Please run it in a virtual environment:
+```pipenv shell```
+
 Please download django using the pip install django. 
 ```pip install django```
 
@@ -16,13 +22,13 @@ Please download selenium:
 
 ```pip install selenium```
 
-Please download pipenv: 
-```pip install pipenv```
+Please install django_components:
+```pip install django_components```
 
-Please run it in a virtual environment:
-```pipenv shell```
+Please install the component drivers:
+```pip install webdriver_manager```
 
-Please run the 
+Please run the python
 ```python manage.py runserver``` 
 
 Should open the http://localhost:8000/
