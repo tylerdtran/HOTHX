@@ -29,7 +29,7 @@
 <div id="content-wrapper">
     <div id="event-list">
         {% for event_i in events %}
-            {% component "event" name2=event_i.name link=event_i.link start_time=event_i.start_time end_time=event_i.end_time location=event_i.location %}
+            {% component "event" eventname=event_i.eventname organization=event_i.organization link=event_i.link date_and_time=event_i.date_and_time location=event_i.location placeid=event_i.placeid %}
         {% endfor %}
     </div>
     <div id="google-map">

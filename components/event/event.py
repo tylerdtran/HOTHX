@@ -7,15 +7,16 @@ class Event(component.Component):
     template_name = "event/event.html"
 
     # This component takes one parameter, a date string to show in the template
-    def get_context_data(name, link, start_time, end_time, location):
+    def get_context_data(id, eventname, organization, link, date_and_time, location, placeid):
         print("HERE")
         return {
-            "name": name,
+            "id": "bs",
+            "eventname": eventname,
+            "organization": organization,
             "link": link,
-            "start_time": start_time,
-            "end_time": end_time,
+            "date_and_time": date_and_time,
             "location": location,
-            # "url": url
+            "placeid": placeid
         }
 
     class Media:
