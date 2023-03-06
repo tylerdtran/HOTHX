@@ -1,5 +1,7 @@
 # HOTHX
-Our Hack on the Hill Project 
+Our Hack on the Hill Project
+
+The youtube link to our project: https://www.youtube.com/watch?v=vv2qFi7livM&ab_channel=Alyssa
 
 There may be dependecies to install such as selenium, django
 
