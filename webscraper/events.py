@@ -35,35 +35,44 @@ def scrape_surfrider():
             'end_time': '2021-09-25T12:00:00-07:00',
             'location': 'San Diego, CA'
         }
+        
+        bad_sample_event = {
+            "component": "event",
+            "title": "Beach Cleanup",
+            "location": "Long Beach, CA",
+            "date": "June 21, 2023",
+            "time": "9:00am",
+            "organization": "Long Beach Surfrider"
+        }
 
         # THE REST OF THIS FUNCTION DOES NOT WORK
-        
-        # execute my request, parse the data using XML parser in BS4
-        soup = BeautifulSoup(r.content, features='xml')
-        # select only the "items" I want from the data
-        articles = soup.findAll('item')
+
+        # # execute my request, parse the data using XML parser in BS4
+        # soup = BeautifulSoup(r.content, features='xml')
+        # # select only the "items" I want from the data
+        # articles = soup.findAll('item')
     
-        # for each "item" I want, parse it into a list
-        for a in articles:
-            title = a.find('title').text
-            link = a.find('link').text
-            published_wrong = a.find('pubDate').text
-            published = datetime.strptime(published_wrong, '%a, %d %b %Y %H:%M:%S %z')
-            # print(published, published_wrong) # checking correct date format
-            # create an "article" object with the data
-            # from each "item"
-            article = {
-                'title': title,
-                'link': link,
-                'published': published,
-                'source': 'HackerNews RSS'
-            }
-            # append my "article_list" with each "article" object
-            article_list.append(article)
-            print('Finished scraping the articles')
+        # # for each "item" I want, parse it into a list
+        # for a in articles:
+        #     title = a.find('title').text
+        #     link = a.find('link').text
+        #     published_wrong = a.find('pubDate').text
+        #     published = datetime.strptime(published_wrong, '%a, %d %b %Y %H:%M:%S %z')
+        #     # print(published, published_wrong) # checking correct date format
+        #     # create an "article" object with the data
+        #     # from each "item"
+        #     article = {
+        #         'title': title,
+        #         'link': link,
+        #         'published': published,
+        #         'source': 'HackerNews RSS'
+        #     }
+        #     # append my "article_list" with each "article" object
+        #     article_list.append(article)
+        #     print('Finished scraping the articles')
     
-            # after the loop, dump my saved objects into a .txt file
-            return save_function([sample_event])
+        #     # after the loop, dump my saved objects into a .txt file
+            return save_function([bad_sample_event])
     except Exception as e:
         print('The scraping job failed. See exception:')
         print(e)
@@ -84,9 +93,10 @@ def save_function(event_list):
             )
             new_count += 1
         except Exception as e:
-            print('failed at latest_event is none')
+            print('failed at latest_event is none, but its OK')
             print(e)
             break
     return print('finished')
 
-scrape_surfrider()
+if __main__ == '__main__':
+    scrape_surfrider()

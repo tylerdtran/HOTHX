@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webscraper.apps.WebscraperConfig', # web scraper
-    "django_components",
+    'webscraper', # web scraper
+    'django_components',
 ]
 
 MIDDLEWARE = [

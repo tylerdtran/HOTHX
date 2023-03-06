@@ -28,9 +28,9 @@
 </style>
 <div id="content-wrapper">
     <div id="event-list">
-        {% component "event" title="Beach Cleanup" location="Long Beach, CA" date="June 21, 2023" time="9:00am" organization="Long Beach Surfrider" %}
-        {% component "event" title="Beach Cleanup" location="Long Beach, CA" date="June 21, 2023" time="9:00am" organization="Long Beach Surfrider" %}
-        {% component "event" title="Beach Cleanup" location="Long Beach, CA" date="June 21, 2023" time="9:00am" organization="Long Beach Surfrider" %}
+        {% for event_i in events %}
+            {% component "event" name2=event_i.name link=event_i.link start_time=event_i.start_time end_time=event_i.end_time location=event_i.location %}
+        {% endfor %}
     </div>
     <div id="google-map">
         google map
