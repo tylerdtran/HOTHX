@@ -2,9 +2,13 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-import webscraperevents
-
-scrape_surfrider()
+# scraping tools
+from bs4 import BeautifulSoup
+import json
+from datetime import datetime
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 
 def main():
     """Run administrative tasks."""
@@ -19,20 +23,7 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
-
-if __name__ == '__main__':
-    main()
-
-
 ## Scrape Tool ##
-
-# scraping tools
-from bs4 import BeautifulSoup
-import json
-from datetime import datetime
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
 
 SURFRIDER_URL = 'https://volunteer.surfrider.org'
 DRIVER_PATH = "/Users/ajtadeo/chromedriver_mac64/chromedriver"
@@ -104,3 +95,8 @@ def save_function(event_list):
             print(e)
             break
     return print('finished')
+
+scrape_surfrider()
+
+if __name__ == '__main__':
+    main()

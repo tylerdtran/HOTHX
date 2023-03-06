@@ -3,5 +3,5 @@
 
 
 
-if __main__ == '__main__':
-    scrape_surfrider()
+# if __main__ == '__main__':
+#     scrape_surfrider()
